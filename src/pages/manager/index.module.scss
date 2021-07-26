@@ -1,0 +1,107 @@
+.index {
+  position: relative;
+  .actions {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    display: flex;
+    align-items: center;
+    .action + .action {
+      margin-left: 16px;
+    }
+
+    .action {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--color-primary);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0px 1px 2px -2px rgba($color: #000000, $alpha: 0.16);
+      transition: all 0.3s;
+      &:hover {
+        // background-color: rgba($color: var(--color-primary), $alpha: 0.9);
+        box-shadow: 0px 5px 12px 4px rgba($color: #000000, $alpha: 0.09);
+      }
+    }
+  }
+
+  .list {
+    padding-bottom: 100px;
+    .item,
+    .item > .lbox,
+    .item > .rbox {
+      display: flex;
+      align-items: center;
+    }
+    .item + .item {
+      border-top: 1px solid #efefef;
+    }
+    .item {
+      line-height: 1;
+      padding: 24px 16px;
+      color: #999;
+      &:hover {
+        background: rgba($color: var(--color-primary), $alpha: 0.09);
+      }
+      .lbox {
+        flex: 1;
+        > * + * {
+          margin-left: 16px;
+        }
+        .state {
+          width: 14px;
+          height: 14px;
+          background-color: #dfdfdf;
+          border-radius: 50%;
+        }
+        .name {
+          font-weight: bold;
+        }
+        .url {
+          cursor: pointer;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+      }
+
+      .rbox {
+        margin: -8px;
+        button {
+          border: none;
+          background: none;
+          padding: 0;
+          color: var(--color-primary);
+          margin: 8px;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+        .del {
+          color: var(--color-third);
+        }
+        button:disabled {
+          color: #999;
+        }
+      }
+    }
+
+    .active {
+      color: #333;
+      .lbox {
+        .state {
+          background-color: var(--color-primary);
+        }
+      }
+    }
+  }
+}

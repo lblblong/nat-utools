@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": [
+      "utools-helper/@types/utools",
+      "utools-helper/@types/electron",
+      "@types/node"
+    ]
+  },
+  "include": [
+    "src",
+    "global.d.ts"
+  ]
+}

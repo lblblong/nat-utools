@@ -1,0 +1,18 @@
+{
+  "pluginName": "Live Server",
+  "description": "启动静态资源实时服务，静态页面开发神器。",
+  "author": "lblblong",
+  "homepage": "https://github.com/lblblong/live-server-utools",
+  "main": "./build/index.html",
+  "preload": "./build-preload/index.js",
+  "version": "0.0.1",
+  "logo": "assets/logo.png",
+  "platform": ["win32"],
+  "features": [
+    {
+      "code": "startLiveServer",
+      "explain": "内网穿透管理面板",
+      "cmds": ["内网穿透"]
+    }
+  ]
+}

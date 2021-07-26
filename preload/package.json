@@ -1,0 +1,18 @@
+{
+  "name": "preload",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": ".",
+  "main": "./dist/index.js",
+  "scripts": {
+    "serve": "parcel src/index.ts --out-dir ../build-preload --target node --bundle-node-modules",
+    "build": "rm -rf ../build-preload && parcel build src/index.ts --out-dir ../build-preload --target node --bundle-node-modules --no-source-maps"
+  },
+  "dependencies": {
+    "localtunnel": "^2.0.1",
+    "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/localtunnel": "^2.0.1"
+  }
+}
