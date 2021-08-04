@@ -7,10 +7,8 @@
     "serve": "craco build && cra-build-watch",
     "serve:preload": "cd ./preload && npm run serve",
     "build": "npm run build:html && npm run build:preload",
-    "build:html": "craco build",
+    "build:html": "rm -rf ./utools/build && craco build && cp -r ./build ./utools",
     "build:preload": "cd ./preload && npm run build",
-    "build:demo": "env-cmd -f .env.staging craco build",
-    "test": "craco test",
     "commit": "git-cz"
   },
   "dependencies": {

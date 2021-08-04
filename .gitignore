@@ -2,8 +2,9 @@
 /dist
 /node_modules
 /build
-/build-preload
 /.cache
+/utools/build
+/utools/index.js
 
 # Logs
 logs

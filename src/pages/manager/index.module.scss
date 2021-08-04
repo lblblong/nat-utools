@@ -103,5 +103,25 @@
         }
       }
     }
+
+    .loading {
+      .lbox {
+        .state {
+          animation-name: blink;
+          animation-duration: 0.5s;
+          animation-iteration-count: infinite;
+          transition: all 0.5s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes blink {
+  from {
+    background-color: #dfdfdf;
+  }
+  to {
+    background-color: var(--color-primary);
   }
 }

@@ -27,6 +27,9 @@
     color: #666;
     padding: 16px 0;
     line-height: 1.7;
+    max-height: 50vh;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
 
   .btn {

@@ -5,8 +5,8 @@
   "homepage": ".",
   "main": "./dist/index.js",
   "scripts": {
-    "serve": "parcel src/index.ts --out-dir ../build-preload --target node --bundle-node-modules",
-    "build": "rm -rf ../build-preload && parcel build src/index.ts --out-dir ../build-preload --target node --bundle-node-modules --no-source-maps"
+    "serve": "parcel src/index.ts --out-dir ../utools/ --target node --bundle-node-modules",
+    "build": "rm -rf ../utools/index.js && parcel build src/index.ts --out-dir ../utools --target node --bundle-node-modules --no-source-maps"
   },
   "dependencies": {
     "localtunnel": "^2.0.1",

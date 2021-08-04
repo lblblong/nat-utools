@@ -28,22 +28,31 @@ export const IndexPage = () => {
           <div className={styles.list}>
             {StoreServer.natList.map((it) => {
               return (
-                <div className={classNames(styles.item, { [styles.active]: it.state === NatState.on })} key={it.id}>
+                <div
+                  className={classNames(styles.item, {
+                    [styles.active]: it.state === NatState.on,
+                    [styles.loading]: it.state === NatState.loading,
+                  })}
+                  key={it.id}
+                >
                   <div className={styles.lbox}>
                     <span className={styles.state}></span>
                     <span className={styles.name}>
                       {it.port}
                       {it.subdomain ? ` - ${it.subdomain}` : ''}
                     </span>
-                    <span className={styles.url}>{it.url}</span>
+                    <span
+                      className={styles.url}
+                      onClick={() => {
+                        utools.shellOpenExternal(it.url!)
+                      }}
+                    >
+                      {it.url}
+                    </span>
                   </div>
 
                   <div className={styles.rbox}>
-                    <button
-                      disabled={it.state === NatState.loading}
-                      className={classNames(styles.btn, styles.del)}
-                      onClick={() => StoreServer.del(it.id)}
-                    >
+                    <button className={classNames(styles.btn, styles.del)} onClick={() => StoreServer.del(it.id)}>
                       删除
                     </button>
                     <button
@@ -71,7 +80,7 @@ export const IndexPage = () => {
                       className={styles.btn}
                       onClick={() => StoreServer.toggle(it.id)}
                     >
-                      {it.state === NatState.on ? '关闭服务' : '启动服务'}
+                      {it.state === NatState.off ? '启动服务' : '关闭服务'}
                     </button>
                   </div>
                 </div>

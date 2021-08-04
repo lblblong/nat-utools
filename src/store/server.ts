@@ -1,5 +1,5 @@
 import localtunnel from 'localtunnel'
-import { makeAutoObservable, toJS } from 'mobx'
+import { makeAutoObservable } from 'mobx'
 import { openAlert } from 'src/components/alert'
 import { openHelp } from 'src/components/help'
 import { openNatEdit } from 'src/components/nat-edit'
@@ -23,6 +23,9 @@ class Store {
     utools.onPluginEnter(this.onPluginEnter)
     utools.onPluginReady(() => {
       this.loadDb()
+      if (this.natList.length === 0) {
+        openHelp()
+      }
     })
   }
 
@@ -46,12 +49,14 @@ class Store {
     const nat = this.getNatById(id)
     if (nat.state === NatState.loading) return
     nat.state = NatState.loading
+    nat.logs.push('启动中')
     nat.tunnel = await window.localtunnel({
       port: nat.port,
       subdomain: nat.subdomain,
     })
     nat.url = nat.tunnel.url
     nat.state = NatState.on
+    nat.logs.push('启动成功')
 
     const onRequest = (req: any) => {
       nat.logs.push(`${req.method} ${req.path}`)
@@ -68,6 +73,7 @@ class Store {
       nat.state = NatState.off
       nat.tunnel = undefined
       nat.url = ''
+      nat.logs.push('已关闭')
     })
     nat.tunnel?.on('error', onError)
     nat.tunnel?.on('request', onRequest)
@@ -81,7 +87,7 @@ class Store {
 
   async stop(id: number) {
     const nat = this.getNatById(id)
-    if (nat.state !== NatState.on || nat.tunnel === undefined) return
+    if (nat.state === NatState.off) return
 
     return new Promise<void>((ok) => {
       nat.tunnel?.once('close', () => {
@@ -128,7 +134,7 @@ class Store {
 
   toggle = async (id: number) => {
     const nat = this.getNatById(id)
-    if (nat.state === NatState.on) {
+    if (nat.state === NatState.on || nat.state === NatState.loading) {
       await this.stop(nat.id)
     } else {
       await this.start(nat.id)
