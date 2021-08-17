@@ -10,8 +10,18 @@ import { Nat, NatState } from '../model/nat'
 declare global {
   interface Window {
     localtunnel: typeof localtunnel
+    axios: any
   }
 }
+
+
+window.axios.interceptors.request.use(
+  function (config) {
+    // 解决 localtrunnel 返回 401 问题
+    config.headers['Bypass-Tunnel-Reminder'] = 'true'
+    return config
+  }
+)
 
 function getStorageID() {
   return utools.getLocalId() + '_servers'
