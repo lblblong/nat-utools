@@ -3,16 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
-  "main": "./dist/index.js",
+  "app": "../utools/index.js",
+  "targets": {
+    "app": {
+      "source": "src/index.ts",
+      "context": "node",
+      "sourceMap": false,
+      "includeNodeModules": [
+        "localtunnel",
+        "axios"
+      ]
+    }
+  },
   "scripts": {
-    "serve": "parcel src/index.ts --out-dir ../utools/ --target node --bundle-node-modules",
-    "build": "rm -rf ../utools/index.js && parcel build src/index.ts --out-dir ../utools --target node --bundle-node-modules --no-source-maps"
+    "build": "rm -rf ../utools/index.js && parcel build"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "localtunnel": "^2.0.1",
     "tslib": "^2.1.0"
   },
   "devDependencies": {
-    "@types/localtunnel": "^2.0.1"
+    "@types/localtunnel": "^2.0.1",
+    "parcel": "^2.0.0-rc.0"
   }
 }
