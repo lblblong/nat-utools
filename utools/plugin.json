@@ -1,13 +1,13 @@
 {
-  "pluginName": "Live Server",
-  "description": "启动静态资源实时服务，静态页面开发神器。",
+  "pluginName": "内网穿透NAT",
+  "description": "内网穿透",
   "author": "lblblong",
   "homepage": "https://github.com/lblblong/nat-utools",
   "main": "./build/index.html",
   "preload": "./index.js",
-  "version": "0.0.1",
+  "version": "1.2.1",
   "logo": "assets/logo.png",
-  "platform": ["win32"],
+  "platform": ["win32", "darwin", "linux"],
   "features": [
     {
       "code": "startLiveServer",

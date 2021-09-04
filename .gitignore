@@ -5,6 +5,7 @@
 /.cache
 /utools/build
 /utools/index.js
+/.parcel-cache
 
 # Logs
 logs
