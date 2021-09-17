@@ -8,9 +8,11 @@
 
 ## 安装
 
-第一步：下载 upx 安装文件：[NAT 内网穿透.upx](https://github.com/lblblong/nat-utools/releases/download/v1.2.0/NAT-1.2.0.upx)
+不知道为什么打包后安装会读取不到 preload 里设置的属性，所以不能直接下载 upx 安装了，以下提供源码安装方法（很简单）。
 
-第二步：按住 `alt + 空格` 打开 utools 输入框，把 upx 文件拖拽进去安装即可
+第一步：下载压缩包源文件：
+
+第二步：解压压缩包，按住 `alt + 空格` 打开 utools 输入框，把压缩包中的 plugin.json 文件拖拽进去，然后选择 "安装插件" 即可
 
 然后在 utools 输入框输入关键词即可打开内网穿透面板：nw，内网穿透
 
