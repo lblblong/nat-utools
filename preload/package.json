@@ -9,10 +9,7 @@
       "source": "src/index.ts",
       "context": "node",
       "sourceMap": false,
-      "includeNodeModules": [
-        "localtunnel",
-        "axios"
-      ]
+      "includeNodeModules": true
     }
   },
   "scripts": {
