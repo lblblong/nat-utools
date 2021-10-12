@@ -1,0 +1,11 @@
+.index {
+  width: 70vw;
+  max-width: 800px;
+  height: 100vh;
+  background-color: #fff;
+  overflow-y: auto;
+  color: #333;
+  .content {
+    padding: 20px;
+  }
+}

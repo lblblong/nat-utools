@@ -1,0 +1,26 @@
+{
+  "name": "preload",
+  "version": "0.0.1",
+  "private": true,
+  "homepage": ".",
+  "app": "../../utools/index.js",
+  "targets": {
+    "app": {
+      "source": "src/index.ts",
+      "context": "node",
+      "sourceMap": false,
+      "includeNodeModules": true
+    }
+  },
+  "scripts": {
+    "build": "rm -rf ../utools/index.js && parcel build"
+  },
+  "dependencies": {
+    "localtunnel": "^2.0.2",
+    "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/localtunnel": "^2.0.1",
+    "parcel": "^2.0.0-rc.0"
+  }
+}

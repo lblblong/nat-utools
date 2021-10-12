@@ -1,0 +1,38 @@
+.index {
+  padding: 18px;
+  border-radius: 12px;
+  background-color: #fff;
+  width: 50vw;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+
+  > * + * {
+    margin-top: 18px;
+    font-size: 18px;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  input {
+    padding: 16px;
+    border: none;
+    border-bottom: 1px solid #efefef;
+    outline: none;
+    font-weight: bold;
+  }
+
+  .btn {
+    padding: 16px;
+    background-color: var(--color-primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+}
