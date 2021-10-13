@@ -32,36 +32,65 @@
 
   .list {
     padding-bottom: 100px;
-    .item,
-    .item > .lbox,
-    .item > .rbox {
-      display: flex;
-      align-items: center;
-    }
     .item + .item {
       border-top: 1px solid #efefef;
     }
     .item {
-      line-height: 1;
+      line-height: 1.3;
       padding: 24px 16px;
       color: #999;
       &:hover {
-        background: rgba($color: var(--color-primary), $alpha: 0.09);
+        background: rgba($color: #5d9cec, $alpha: 0.06);
       }
-      .lbox {
-        flex: 1;
-        > * + * {
-          margin-left: 16px;
+      $state-width: calc(14px + 16px);
+      .state {
+        width: 14px;
+        height: 14px;
+        background-color: #dfdfdf;
+        border-radius: 50%;
+      }
+
+      .top {
+        display: flex;
+        align-items: center;
+        > * {
+          display: flex;
+          align-items: center;
         }
-        .state {
-          width: 14px;
-          height: 14px;
-          background-color: #dfdfdf;
-          border-radius: 50%;
+        .lbox {
+          width: $state-width;
         }
-        .name {
-          font-weight: bold;
+        .cbox {
+          flex: 1;
+          .name {
+            font-weight: bold;
+          }
         }
+
+        .rbox {
+          margin: -8px;
+          button {
+            border: none;
+            background: none;
+            padding: 0;
+            color: var(--color-primary);
+            margin: 8px;
+            cursor: pointer;
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+          .del {
+            color: var(--color-third);
+          }
+          button:disabled {
+            color: #999;
+          }
+        }
+      }
+      .bottom {
+        padding-left: $state-width;
+        padding-top: 16px;
         .url {
           cursor: pointer;
           overflow: hidden;
@@ -72,46 +101,21 @@
           }
         }
       }
+    }
 
-      .rbox {
-        margin: -8px;
-        button {
-          border: none;
-          background: none;
-          padding: 0;
-          color: var(--color-primary);
-          margin: 8px;
-          cursor: pointer;
-          &:hover {
-            text-decoration: underline;
-          }
-        }
-        .del {
-          color: var(--color-third);
-        }
-        button:disabled {
-          color: #999;
-        }
+    .loading {
+      .state {
+        animation-name: blink;
+        animation-duration: 0.5s;
+        animation-iteration-count: infinite;
+        transition: all 0.5s;
       }
     }
 
     .active {
       color: #333;
-      .lbox {
-        .state {
-          background-color: var(--color-primary);
-        }
-      }
-    }
-
-    .loading {
-      .lbox {
-        .state {
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-iteration-count: infinite;
-          transition: all 0.5s;
-        }
+      .state {
+        background-color: var(--color-primary);
       }
     }
   }

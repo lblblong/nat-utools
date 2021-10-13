@@ -1,6 +1,6 @@
 {
+  "extends": "./tsconfig.path.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "target": "es5",
     "lib": [
       "dom",
@@ -11,18 +11,16 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
-    "noImplicitAny": false,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
     "noEmit": true,
     "jsx": "react-jsx",
+    "preserveSymlinks": true,
     "types": [
       "utools-helper/@types/utools",
       "utools-helper/@types/electron",
@@ -31,6 +29,6 @@
   },
   "include": [
     "src",
-    "global.d.ts"
+    "typing/global.d.ts"
   ]
 }

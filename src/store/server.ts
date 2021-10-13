@@ -1,3 +1,4 @@
+import { proxy } from 'ajax-hook'
 import localtunnel from 'localtunnel'
 import { makeAutoObservable } from 'mobx'
 import { openAlert } from 'src/components/alert'
@@ -12,6 +13,19 @@ declare global {
     localtunnel: typeof localtunnel
   }
 }
+
+proxy({
+  onRequest: (config, handler) => {
+    if (config) config.headers['Bypass-Tunnel-Reminder'] = 'true'
+    handler.next(config)
+  },
+  onError: (err, handler) => {
+    handler.next(err)
+  },
+  onResponse: (response, handler) => {
+    handler.next(response)
+  },
+})
 
 function getStorageID() {
   return utools.getLocalId() + '_servers'
@@ -47,37 +61,8 @@ class Store {
 
   async start(id: number) {
     const nat = this.getNatById(id)
-    if (nat.state === NatState.loading) return
-    nat.state = NatState.loading
-    nat.logs.push('启动中')
-    nat.tunnel = await window.localtunnel({
-      port: nat.port,
-      subdomain: nat.subdomain,
-    })
-    nat.url = nat.tunnel.url
-    nat.state = NatState.on
-    nat.logs.push('启动成功')
-
-    const onRequest = (req: any) => {
-      nat.logs.push(`${req.method} ${req.path}`)
-    }
-
-    const onError = (err: Error) => {
-      console.log(nat.id, err)
-      nat.logs.push(err.message)
-    }
-
-    nat.tunnel?.once('close', () => {
-      nat.tunnel?.off('error', onError)
-      nat.tunnel?.off('request', onRequest)
-      nat.state = NatState.off
-      nat.tunnel = undefined
-      nat.url = ''
-      nat.logs.push('已关闭')
-    })
-    nat.tunnel?.on('error', onError)
-    nat.tunnel?.on('request', onRequest)
-    if (nat.subdomain && nat.url.indexOf('//' + nat.subdomain) === -1) {
+    await nat.start()
+    if (nat.subdomain && nat.url!.indexOf('//' + nat.subdomain) === -1) {
       openAlert({
         title: '提示',
         content: '子域名被占用，已为您分配其他子域名',
@@ -87,14 +72,7 @@ class Store {
 
   async stop(id: number) {
     const nat = this.getNatById(id)
-    if (nat.state === NatState.off) return
-
-    return new Promise<void>((ok) => {
-      nat.tunnel?.once('close', () => {
-        ok()
-      })
-      nat.tunnel?.close()
-    })
+    await nat.stop()
   }
 
   async del(id: number) {
@@ -111,13 +89,11 @@ class Store {
       await this.stop(id)
     }
     const data = await openNatEdit({
-      defaultValue: {
-        port: nat.port,
-        subdomain: nat.subdomain,
-      },
+      defaultValue: nat.toJSON(),
     })
     nat.port = data.port
     nat.subdomain = data.subdomain
+    nat.local_host = data.local_host
     this.flushDb()
     if (originState === NatState.on) {
       this.start(id)
@@ -151,13 +127,7 @@ class Store {
         }[]
       >(getStorageID())
       if (!it || !it.data) return
-      this.natList = it.data.map((d) => {
-        return new Nat({
-          id: d.id,
-          subdomain: d.subdomain,
-          port: d.port,
-        })
-      })
+      this.natList = it.data.map((d) => new Nat(d))
     } catch (err) {
       alert(err)
     }
@@ -172,13 +142,7 @@ class Store {
       }[]
     >(getStorageID())
 
-    const data = this.natList.map((d) => {
-      return {
-        id: d.id,
-        subdomain: d.subdomain,
-        port: d.port,
-      }
-    })
+    const data = this.natList.map((d) => d.toJSON())
 
     if (!it) {
       it = {

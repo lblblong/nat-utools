@@ -4,7 +4,7 @@
 
 欢迎 start ✨
 
-![](https://cdn.jsdelivr.net/gh/lblblong/image-bed@main/1627284934657-QQ截图20210726144102.png)
+![](https://cdn.jsdelivr.net/gh/lblblong/image-bed@main/1634030014550QQ%E6%88%AA%E5%9B%BE20211012170819.png)
 
 ## 安装
 
@@ -16,6 +16,6 @@
 
 ## 部分界面
 
-![](https://cdn.jsdelivr.net/gh/lblblong/image-bed@main/1627284934657-QQ截图20210726144102.png)
-![](https://cdn.jsdelivr.net/gh/lblblong/image-bed@main/1627284982765-QQ截图20210726144111.png)
-![](https://cdn.jsdelivr.net/gh/lblblong/image-bed@main/1627284993059-QQ截图20210726144126.png)
+![](https://cdn.jsdelivr.net/gh/lblblong/image-bed@main/1634030014550QQ%E6%88%AA%E5%9B%BE20211012170819.png)
+![](https://cdn.jsdelivr.net/gh/lblblong/image-bed@main/1634030036322QQ%E6%88%AA%E5%9B%BE20211012171258.png)
+![](https://cdn.jsdelivr.net/gh/lblblong/image-bed@main/1634030047907QQ%E6%88%AA%E5%9B%BE20211012170837.png)

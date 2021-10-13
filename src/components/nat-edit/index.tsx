@@ -1,13 +1,13 @@
 import { Popups, useController } from 'lbl-popups'
 import { Observer, useLocalStore } from 'mobx-react'
 import { FC } from 'react'
+import { Nat } from 'src/model/nat'
 import styles from './index.module.scss'
 
+type Data = Pick<Nat, 'port' | 'subdomain' | 'local_host'>
+
 interface Props {
-  defaultValue?: {
-    port: number
-    subdomain?: string
-  }
+  defaultValue?: Data
 }
 
 const NatEdit: FC<Props> = (props) => {
@@ -16,6 +16,7 @@ const NatEdit: FC<Props> = (props) => {
     return {
       port: props.defaultValue?.port || '',
       subdomian: props.defaultValue?.subdomain || '',
+      local_host: props.defaultValue?.local_host || '',
       bindOnChange: (key: string) => {
         return (e: any) => {
           localStore[key] = e.target.value
@@ -40,12 +41,18 @@ const NatEdit: FC<Props> = (props) => {
             value={localStore.subdomian}
             onChange={localStore.bindOnChange('subdomian')}
           />
+          <input
+            placeholder="自定义HOST（可选）"
+            value={localStore.local_host}
+            onChange={localStore.bindOnChange('local_host')}
+          />
           <div
             className={styles.btn}
             onClick={() => {
               ctl.close({
                 port: localStore.port,
                 subdomain: localStore.subdomian,
+                local_host: localStore.local_host,
               })
             }}
           >
@@ -57,13 +64,10 @@ const NatEdit: FC<Props> = (props) => {
   )
 }
 
-export function openNatEdit(props?: Props): Promise<{
-  port: number
-  subdomain?: string
-}> {
+export function openNatEdit(props?: Props): Promise<Data> {
   return Popups.open({
     el: NatEdit,
     position: 'center',
-    props
+    props,
   })
 }
