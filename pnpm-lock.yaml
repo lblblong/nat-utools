@@ -9,7 +9,6 @@ importers:
       '@types/react': ^17.0.0
       '@types/react-dom': ^17.0.0
       '@vitejs/plugin-react': ^1.0.7
-      ajax-hook: ^2.0.3
       classnames: ^2.3.1
       commitizen: ^4.2.4
       csstype: ^3.0.9
@@ -28,7 +27,6 @@ importers:
       utools-helper: ^1.4.6
       vite: ^2.6.13
     dependencies:
-      ajax-hook: 2.0.3
       classnames: 2.3.1
       dayjs: 1.10.7
       history: 5.0.1
@@ -3668,10 +3666,6 @@ packages:
       clean-stack: 2.2.0
       indent-string: 4.0.0
     dev: true
-
-  /ajax-hook/2.0.3:
-    resolution: {integrity: sha512-b72lbaLN3FOXlMrO7xeAnWqOcNwp9Z8Gi1+WrnntbP9BcNFpg0P4i/SLAOqoO8VX5DNck3qmdW4rzK0iSRwoHg==}
-    dev: false
 
   /ajv-errors/1.0.1_ajv@6.12.6:
     resolution: {integrity: sha512-DCRfO/4nQ+89p/RK43i8Ezd41EqdGIU4ld7nGF8OQ14oc/we5rEntLCUa7+jrn3nn83BosfwZA0wb4pon2o8iQ==}
@@ -10137,6 +10131,7 @@ packages:
 
   /nan/2.15.0:
     resolution: {integrity: sha512-8ZtvEnA2c5aYCZYd1cvgdnU6cqwixRoYg70xPLWUws5ORTa/lnw+u4amixRS/Ac5U5mQVgp9pnlSUnbNWFaWZQ==}
+    requiresBuild: true
     dev: true
 
   /nanocolors/0.1.12:

@@ -1,4 +1,3 @@
-// import { proxy } from 'ajax-hook'
 import localtunnel from 'localtunnel'
 import { makeAutoObservable } from 'mobx'
 import { openAlert } from 'src/components/alert'
@@ -13,19 +12,6 @@ declare global {
     localtunnel: typeof localtunnel
   }
 }
-
-// proxy({
-//   onRequest: (config, handler) => {
-//     if (config) config.headers['Bypass-Tunnel-Reminder'] = 'true'
-//     handler.next(config)
-//   },
-//   onError: (err, handler) => {
-//     handler.next(err)
-//   },
-//   onResponse: (response, handler) => {
-//     handler.next(response)
-//   },
-// })
 
 function getStorageID() {
   return utools.getLocalId() + '_servers'
