@@ -3,10 +3,10 @@
   "description": "内网穿透",
   "author": "lblblong",
   "homepage": "https://github.com/lblblong/nat-utools",
-  "main": "./build/index.html",
+  "main": "./index.html",
   "preload": "./index.js",
   "version": "2.0.0",
-  "logo": "assets/logo.png",
+  "logo": "./logo.png",
   "platform": ["win32", "darwin", "linux"],
   "features": [
     {

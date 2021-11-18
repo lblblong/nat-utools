@@ -8,16 +8,16 @@
   "scripts": {
     "serve": "vite build -w",
     "serve:preload": "cd ./packages/preload && npm run serve",
-    "build": "npm run build:html && npm run build:preload",
-    "build:html": "rm -rf ./utools/build && vite build && cp -r ./build ./utools",
+    "build": "npm run build:preload && npm run build:html",
+    "build:html": "vite build",
     "build:preload": "cd ./packages/preload && npm run build",
     "commit": "git-cz"
   },
   "dependencies": {
     "classnames": "^2.3.1",
     "dayjs": "^1.10.7",
-    "history": "^5.0.0",
-    "lbl-popups": "^1.0.0",
+    "is-wsl": "^2.2.0",
+    "lbl-popups": "^1.1.1",
     "mobx": "^6.3.3",
     "mobx-react": "^7.2.0",
     "react": "^17.0.2",
@@ -37,7 +37,7 @@
     "typescript": "^4.1.2",
     "utility-types": "^3.10.0",
     "utools-helper": "^1.4.6",
-    "vite": "^2.6.13"
+    "vite": "^2.6.14"
   },
   "config": {
     "commitizen": {

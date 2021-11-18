@@ -3,8 +3,7 @@
 /node_modules
 /build
 /.cache
-/utools/build
-/utools/index.js
+/public/index.js
 /.parcel-cache
 
 # Logs
